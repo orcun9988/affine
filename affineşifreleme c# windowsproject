@@ -1,7 +1,9 @@
+//github linki: https://github.com/orcun9988/affine
+
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;                                         //Gerekli kütüphaneler
 using System.Linq;
 using System.Text;
@@ -22,7 +24,7 @@ namespace WindowsFormsApp2
             // kontrol bölümü
             if (string.IsNullOrWhiteSpace(textBox1.Text))  //eğer textbox1.text boş veya sadece boşluk varsa aşağıdaki komutları gerçekleştir
             {
-                MessageBox.Show("A anahtarını boş bırakamazsınız.");
+                MessageBox.Show("A anahtarını boş bırakamazsınız.");  //mesaj kutusu çıkart
                 return; //başa dön
             }
 
@@ -57,12 +59,12 @@ namespace WindowsFormsApp2
             { "A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z" };
             try
             {
-                string metin = textBox3.Text;
+                string metin = textBox3.Text;  //metin adlı string değişkenini textbox3'teki texte eşit tutttum.
                 int a = int.Parse(textBox1.Text); //String türündeki değerleri sayı türündeki değerlere çevirmekte kullanılır.
                 int b = int.Parse(textBox2.Text); //String türündeki değerleri sayı türündeki değerlere çevirmekte kullanılır.  int.parse
-                int x = 0;
+                int x = 0; //x adında int değeri 0 
                 int Ey = 0;
-                string smetin = "";
+                string smetin = ""; //smetin adında string şifremetinin kısaltması  değeri boş ""
                 metin = metin.ToUpper(); //metni BÜYÜK HARF yap
 
                 for (int i = 0; i < metin.Length; i++) //sıfırdan metin uzunluğuna kadar 1 artır
@@ -84,27 +86,27 @@ namespace WindowsFormsApp2
                     // if (pmetin == "") pmetin = "Z";
                     //değer atama bitişi...
 
-                    for (int j = 0; j < alfabe.Length; j++) //sıfırdan dizinin uzunluğuna kadar 1 artır  
+                    for (int j = 0; j < alfabe.Length; j++) //sıfırdan alfabe dizisinin uzunluğuna kadar 1 artır  
                         //yani 0'dan 29 a kadar 1arttırıyor
                     {
-                        if (pmetin == alfabe[j]) //eleman dizide varsa döngüden çık
+                        if (pmetin == alfabe[j]) //eleman dizide varsa döngüden çık     EĞER yukardaki tanımladığım işaretlerden herhangi biri pmetin yani textboxta mevcut ise 
                         { break; } //döngünün bu komutun görüldüğü yerde bitirilerek döngünün dışına çıkılması için kullanılır.
                         else 
                         { x++; } //yoksa dizideki yerini bulmak için 1 artır
                     }
                     if (pmetin == " ") //eğer metinin içerinde boşluk varsa
                     {
-                        smetin += " "; //şifreli metine ekle ama boşluğu şifreleme
-                        x = 0; //dizideki yerini sıfırla
+                        smetin += " "; //şifreli metine ekle ama boşluğu şifreleme  
+                        x = 0; //dizideki yerini sıfırla   BİLİNMEYEN BİRŞEY GİRİLDİĞİNDE DİZİDEKİ YERİNİ 0 YANİ (A HARFİ) olarak kabul edicek 
                     }
                     else if (char.Parse(pmetin) >= 48 && char.Parse(pmetin) <= 57) //ASCI kod tablosunda 0-9 arasındaki rakamlar
                     {
-                        smetin += pmetin; //şifrelemeye dahil etmeden ekle
+                        smetin += pmetin; //şifrelemeye dahil etmeden ekle örnek ? işareti girildiğinde  şifreleme algoritmasana sokmadan yukarda tanımladığım ?  = A daki ? yerine A yı metine eklicek.
                         x = 0; //dizideki yerini sıfırla
                     }
-                    else //yoksa kaldığı yerden devam et
+                    else //yoksa kaldığı yerden devam et şifreleme kısmı başlıyor affine algoritması
                     {
-                        Ey = (a * x + b) % 29; //y=ax+b formülüne göre modunu alarak şifrele
+                        Ey = (a * x + b) % 29; //y=ax+b formülüne göre modunu alarak şifrele  % 29 yazan 29modunu al neden 29 tanımladığım dizi 29 elemanlı (TÜRKÇE ALFABE 29 elemanlı)
                         x = 0; //dizideki yerini sıfırla
                         smetin += alfabe[Ey]; //ve dizideki yerini bul değişkene at
                     }
@@ -113,39 +115,55 @@ namespace WindowsFormsApp2
             }
             catch (Exception) //tüm oluşabilecek hataları yakala
             {
-                MessageBox.Show("Hata");
+                MessageBox.Show("Hata"); //hata mesajı 
             }
         }
+
+
+
+
+
+
+
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //BURDAN SONRASI DECOMPILE KISMINA GIRIYOR DERSTE ANLATMAM GEREKMEZ DİYE BOŞLUK BIRAKTIM AŞAĞI IN ZATEN YUKARDAKILERDEN FARKLI BIRŞEY YOK İŞLEMLER TERSTEN GİDİYOR
 
         private void Button2_Click(object sender, EventArgs e)
         {   // deşifre etme kısmı 
             // kontrol bölümü
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (string.IsNullOrWhiteSpace(textBox1.Text)) //textbox1.text boş veya sadece boşluk varsa
             {
-                MessageBox.Show("A anahtarını boş bırakamazsınız.");
+                MessageBox.Show("A anahtarını boş bırakamazsınız."); //hata mesajı
                 return; //başa dön
             }
 
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            if (string.IsNullOrWhiteSpace(textBox2.Text)) //textbox2.text boş veya sadece boşluk varsa
             {
-                MessageBox.Show("B anahtarını boş bırakamazsınız.");
+                MessageBox.Show("B anahtarını boş bırakamazsınız."); //hata mesajı
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            if (string.IsNullOrWhiteSpace(textBox3.Text))//textbox3.text boş veya sadece boşluk varsa
             {
-                MessageBox.Show("Metini boş bırakamazsınız.");
+                MessageBox.Show("Metini boş bırakamazsınız."); //hata mesajı
                 return;
             }
 
             int sayimi;
-            if (!int.TryParse(textBox1.Text, out sayimi))
+            if (!int.TryParse(textBox1.Text, out sayimi))  //eğer textbox1.text e sayı harici birşey girilmeye çalışılırsa 
             {
-                MessageBox.Show("A anahtarı sadece sayılardan oluşabilir.");
+                MessageBox.Show("A anahtarı sadece sayılardan oluşabilir."); //hata mesajı
                 return;
             }
 
-            if (!int.TryParse(textBox2.Text, out sayimi))
+            if (!int.TryParse(textBox2.Text, out sayimi)) //eğer textbox2.text e sayı harici birşey girilmeye çalışılırsa 
             {
                 MessageBox.Show("B anahtarı sadece sayılardan oluşabilir.");
                 return;
@@ -216,43 +234,50 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        //DECOMPILE KISMI BİTER..
+        //
+        //
+        //
+        //
+        //
+        //
+
+
+
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) //linklabel1 e tıklanırsa ne olur
         {
-            System.Diagnostics.Process.Start("http://www.instagram.com/orcunn_ozer");      //işlemi başlat link varsıyılan tarayıcıda linki açıyor
+            System.Diagnostics.Process.Start("http://www.instagram.com/orcunn_ozer");      //işlemi başlat link varsıyılan tarayıcıda linki açıyor (benim instagram adresim)
         }
 
 
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            if (textBox3.Text == "0003291989") textBox4.Text = "Orçun Özer";    //rfid sistemi için bu sunumda yok
-            else
-                return;
-        }
+       // private void Timer1_Tick(object sender, EventArgs e)
+      //  {
+        //    if (textBox3.Text == "0003291989") textBox4.Text = "Orçun Özer";    //rfid sistemi için bu sunumda yok
+         //   else
+          //      return;
+     //   }
 
-        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)  //linklabele tıklanırsa
+        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)  //linklabel2'ye tıklanırsa
         {
             textBox1.Text = "";   //textboxları boş hale getir
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
+            textBox2.Text = "";    //textboxları boş hale getir
+            textBox3.Text = "";   //textboxları boş hale getir
+            textBox4.Text = "";   //textboxları boş hale getir
+            textBox5.Text = "";   //textboxları boş hale getir
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
+        private void timer2_Tick(object sender, EventArgs e)  //timer2 kodları
         {
-            int sayimi;
+            int sayimi;  //sayimi adinda sayi değişkeni atıyorum
             if (!int.TryParse(textBox1.Text, out sayimi))  //eğer rakam dışı birşey textbox1'e yazılmaya çalışıyor ise textbox1'i boş kutu haline getir  text ""
             {
-                textBox1.Text = "";
+                textBox1.Text = "";  //textboxu boş hale getiriyor
 
             }
             else
-                label10.Text = "";
+                label10.Text = ""; //labeli boş hale getiriyor
 
             if (!int.TryParse(textBox2.Text, out sayimi))
             {
@@ -261,18 +286,5 @@ namespace WindowsFormsApp2
             else
                 label11.Text = "";
         }
-
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-
-
-//Affine Şifreleme ve deşifre etme uygulaması orçun özer TOROS ÜNİVERSİTESİ SİBER GÜVENLİK DERS ÖDEVİ
