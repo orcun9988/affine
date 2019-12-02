@@ -55,65 +55,66 @@ namespace WindowsFormsApp2
 
             // kontrol bölümü biter
 
-            string[] alfabe = new string[] //TÜRKÇE ALFABE dizi tanımladım
+            string[] alfabetr = new string[] //TÜRKÇE ALFABE dizi tanımladım
             { "A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z" };
             try
             {
-                string metin = textBox3.Text;  //metin adlı string değişkenini textbox3'teki texte eşit tutttum.
+                string sifrele = textBox3.Text;  //sifrele adlı string değişkenini textbox3'teki texte eşit tutttum.
                 int a = int.Parse(textBox1.Text); //String türündeki değerleri sayı türündeki değerlere çevirmekte kullanılır.
                 int b = int.Parse(textBox2.Text); //String türündeki değerleri sayı türündeki değerlere çevirmekte kullanılır.  int.parse
                 int x = 0; //x adında int değeri 0 
-                int Ey = 0;
-                string smetin = ""; //smetin adında string şifremetinin kısaltması  değeri boş ""
-                metin = metin.ToUpper(); //metni BÜYÜK HARF yap
+                int modhesap = 0;
+                string sifrelimetin = ""; //sifrelimetin adında string değeri boş ""
+                sifrele = sifrele.ToUpper(); //textbox3'e girilen değerleri büyük harf yap
 
-                for (int i = 0; i < metin.Length; i++) //sıfırdan metin uzunluğuna kadar 1 artır
+                for (int i = 0; i < sifrele.Length; i++) //0'dan başlayıp girilen metinin uzunluğuna kadar 1'er arttır
                 {
-                    string pmetin = metin.Substring(i, 1); //metinden 1 eleman al
+                    string sifrelenecek = sifrele.Substring(i, 1); //
 
                     //noktalama işaretlerini harfe çevirerek değer atıyorum burda
-                    if (pmetin == "?") pmetin = "A"; if (pmetin == "!") pmetin = "B"; if (pmetin == "'") pmetin = "C";
-                    if (pmetin == ">") pmetin = "Ç"; if (pmetin == ".") pmetin = "D"; if (pmetin == ",") pmetin = "E";
-                    if (pmetin == "|") pmetin = "F"; if (pmetin == "£") pmetin = "G"; if (pmetin == "$") pmetin = "Ğ";
-                    if (pmetin == ";") pmetin = "H"; if (pmetin == "%") pmetin = "I"; if (pmetin == "&") pmetin = "İ";
-                    if (pmetin == "/") pmetin = "J"; if (pmetin == "(") pmetin = "K"; if (pmetin == ")") pmetin = "L";
-                    if (pmetin == "=") pmetin = "M"; if (pmetin == "_") pmetin = "N"; if (pmetin == "*") pmetin = "O";
-                    if (pmetin == "^") pmetin = "Ö"; if (pmetin == "^^") pmetin = "P"; if (pmetin == "-") pmetin = "R";
-                    if (pmetin == "<") pmetin = "Ş"; if (pmetin == "{") pmetin = "T"; if (pmetin == "}") pmetin = "U";
-                    if (pmetin == "[") pmetin = "Ü"; if (pmetin == "]") pmetin = "V";
-                    if (pmetin == "+") pmetin = "Y";
-                    // if (pmetin == "\") pmetin = "Y"; 
-                    // if (pmetin == "") pmetin = "Z";
+                    if (sifrelenecek == "?") sifrelenecek = "A"; if (sifrelenecek == "!") sifrelenecek = "B"; if (sifrelenecek == "'") sifrelenecek = "C";
+                    if (sifrelenecek == ">") sifrelenecek = "Ç"; if (sifrelenecek == ".") sifrelenecek = "D"; if (sifrelenecek == ",") sifrelenecek = "E";
+                    if (sifrelenecek == "|") sifrelenecek = "F"; if (sifrelenecek == "£") sifrelenecek = "G"; if (sifrelenecek == "$") sifrelenecek = "Ğ";
+                    if (sifrelenecek == ";") sifrelenecek = "H"; if (sifrelenecek == "%") sifrelenecek = "I"; if (sifrelenecek == "&") sifrelenecek = "İ";
+                    if (sifrelenecek == "/") sifrelenecek = "J"; if (sifrelenecek == "(") sifrelenecek = "K"; if (sifrelenecek == ")") sifrelenecek = "L";
+                    if (sifrelenecek == "=") sifrelenecek = "M"; if (sifrelenecek == "_") sifrelenecek = "N"; if (sifrelenecek == "*") sifrelenecek = "O";
+                    if (sifrelenecek == "^") sifrelenecek = "Ö"; if (sifrelenecek == "^^") sifrelenecek = "P"; if (sifrelenecek == "-") sifrelenecek = "R";
+                    if (sifrelenecek == "<") sifrelenecek = "Ş"; if (sifrelenecek == "{") sifrelenecek = "T"; if (sifrelenecek == "}") sifrelenecek = "U";
+                    if (sifrelenecek == "[") sifrelenecek = "Ü"; if (sifrelenecek == "]") sifrelenecek = "V";
+                    if (sifrelenecek == "+") sifrelenecek = "Y";
+                    // if (sifrelenecek == "\") sifrelenecek = "Y"; 
+                    // if (sifrelenecek == "") sifrelenecek = "Z";
                     //değer atama bitişi...
 
-                    for (int j = 0; j < alfabe.Length; j++) //sıfırdan alfabe dizisinin uzunluğuna kadar 1 artır  
+                    for (int j = 0; j < alfabetr.Length; j++) //0'dan başlayarak dizinin uzunluğuna 1'er arttır.
                         //yani 0'dan 29 a kadar 1arttırıyor
                     {
-                        if (pmetin == alfabe[j]) //eleman dizide varsa döngüden çık     EĞER yukardaki tanımladığım işaretlerden herhangi biri pmetin yani textboxta mevcut ise 
-                        { break; } //döngünün bu komutun görüldüğü yerde bitirilerek döngünün dışına çıkılması için kullanılır.
+                        if (sifrelenecek == alfabetr[j]) //eğer textbox3teki eleman alfabetr dizisinde varsa döngüden çık
+                        { break; } // break komutu döngünün bu komutun görüldüğü yerde bitirilerek döngünün dışına çıkılması için kullanılır.
                         else 
-                        { x++; } //yoksa dizideki yerini bulmak için 1 artır
+                        { x++; } //eleman eğer dizide yoksa dizideki yerini bulabilmek için 1'arttır.
                     }
-                    if (pmetin == " ") //eğer metinin içerinde boşluk varsa
+                    if (sifrelenecek == " ") //eğer textbox3'teki metinde boşluk bırakılırsa
+                        {
+                            sifrelimetin += " "; //textbox3'e ekle ama boşluğu şifreleme  
+                            x = 0; //dizideki yerini sıfırla   BİLİNMEYEN BİRŞEY GİRİLDİĞİNDE DİZİDEKİ YERİNİ 0 YANİ (A HARFİ) olarak kabul edicek 
+                        }
+                        else if (char.Parse(sifrelenecek) >= 48 && char.Parse(sifrelenecek) <= 57) //ASCİ TABLOSUNDA 48-57 ARALĞI = 0-9 ARALIĞI
+                        {
+                            //şifreleme döngüsüne sokmadan eklicek
+                            sifrelimetin += sifrelenecek; //örnek ? işareti girildiğinde  şifreleme algoritmasana sokmadan yukarda tanımladığım ?  = A daki ? yerine A yı metine eklicek.
+                            x = 0; //dizideki yerini sıfırla
+                        }
+                    else //şifreleme kısmı başlıyor affine algoritması
                     {
-                        smetin += " "; //şifreli metine ekle ama boşluğu şifreleme  
-                        x = 0; //dizideki yerini sıfırla   BİLİNMEYEN BİRŞEY GİRİLDİĞİNDE DİZİDEKİ YERİNİ 0 YANİ (A HARFİ) olarak kabul edicek 
-                    }
-                    else if (char.Parse(pmetin) >= 48 && char.Parse(pmetin) <= 57) //ASCI kod tablosunda 0-9 arasındaki rakamlar
-                    {
-                        smetin += pmetin; //şifrelemeye dahil etmeden ekle örnek ? işareti girildiğinde  şifreleme algoritmasana sokmadan yukarda tanımladığım ?  = A daki ? yerine A yı metine eklicek.
+                       modhesap = (a * x + b) % 29; //y=ax+b formülüne göre modunu alarak şifrele  % 29 yazan 29modunu al neden 29 tanımladığım dizi 29 elemanlı (TÜRKÇE ALFABE 29 elemanlı)
                         x = 0; //dizideki yerini sıfırla
-                    }
-                    else //yoksa kaldığı yerden devam et şifreleme kısmı başlıyor affine algoritması
-                    {
-                        Ey = (a * x + b) % 29; //y=ax+b formülüne göre modunu alarak şifrele  % 29 yazan 29modunu al neden 29 tanımladığım dizi 29 elemanlı (TÜRKÇE ALFABE 29 elemanlı)
-                        x = 0; //dizideki yerini sıfırla
-                        smetin += alfabe[Ey]; //ve dizideki yerini bul değişkene at
+                        sifrelimetin += alfabetr[modhesap]; //dizideki yerini bul değişkene koy
                     }
                 }
-                textBox4.Text = smetin; //oluşan şifreli metni yazdır
+                textBox4.Text = sifrelimetin; //oluşan şifreli metini  textbox4'e eşitleyerek yazdır
             }
-            catch (Exception) //tüm oluşabilecek hataları yakala
+            catch (Exception) //Olası bir hata durumunda
             {
                 MessageBox.Show("Hata"); //hata mesajı 
             }
@@ -169,66 +170,84 @@ namespace WindowsFormsApp2
                 return;
             }
             // kontrol bölümü biter
-            string[] alfabe = new string[] //TÜRKÇE alfabe
-            { "A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z" };
+            string[] alfabetr = new string[] //TÜRKÇE alfabe
+                        { "A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z" };
             try
             {
-                string metin = textBox3.Text;
-                int a = int.Parse(textBox1.Text);
-                int b = int.Parse(textBox2.Text);
-                int x = 0, mters = 0;
-                int Dy = 0;
-                string cmetin = "";
-                metin = metin.ToUpper(); //metni BÜYÜK HARF yap
+                string sifrele = textBox3.Text;  //sifrele adlı string değişkenini textbox3'teki texte eşit tutttum.
+                int a = int.Parse(textBox1.Text); //String türündeki değerleri sayı türündeki değerlere çevirmekte kullanılır.
+                int b = int.Parse(textBox2.Text); //String türündeki değerleri sayı türündeki değerlere çevirmekte kullanılır.  int.parse
+                int x = 0; //x adında int değeri 0 
+                int terss=0;
+                int blabla = 0;
+                string tersmetin = ""; //sifrelimetin adında string değeri boş ""
+                sifrele = sifrele.ToUpper(); //textbox3'e girilen değerleri büyük harf yap
 
-                for (int i = 0; i < metin.Length; i++) //sıfırdan metin uzunluğuna kadar 1 artır
+                for (int i = 0; i < sifrele.Length; i++) //0'dan başlayıp girilen metinin uzunluğuna kadar 1'er arttır
                 {
-                    string pmetin = metin.Substring(i, 1); //metinden 1 eleman al
+                    string sifrelenecek = sifrele.Substring(i, 1); //
 
-                    for (int j = 0; j < alfabe.Length; j++) //sıfırdan dizinin uzunluğuna kadar 1 artır
+                    //noktalama işaretlerini harfe çevirerek değer atıyorum burda
+                    if (sifrelenecek == "?") sifrelenecek = "A"; if (sifrelenecek == "!") sifrelenecek = "B"; if (sifrelenecek == "'") sifrelenecek = "C";
+                    if (sifrelenecek == ">") sifrelenecek = "Ç"; if (sifrelenecek == ".") sifrelenecek = "D"; if (sifrelenecek == ",") sifrelenecek = "E";
+                    if (sifrelenecek == "|") sifrelenecek = "F"; if (sifrelenecek == "£") sifrelenecek = "G"; if (sifrelenecek == "$") sifrelenecek = "Ğ";
+                    if (sifrelenecek == ";") sifrelenecek = "H"; if (sifrelenecek == "%") sifrelenecek = "I"; if (sifrelenecek == "&") sifrelenecek = "İ";
+                    if (sifrelenecek == "/") sifrelenecek = "J"; if (sifrelenecek == "(") sifrelenecek = "K"; if (sifrelenecek == ")") sifrelenecek = "L";
+                    if (sifrelenecek == "=") sifrelenecek = "M"; if (sifrelenecek == "_") sifrelenecek = "N"; if (sifrelenecek == "*") sifrelenecek = "O";
+                    if (sifrelenecek == "^") sifrelenecek = "Ö"; if (sifrelenecek == "^^") sifrelenecek = "P"; if (sifrelenecek == "-") sifrelenecek = "R";
+                    if (sifrelenecek == "<") sifrelenecek = "Ş"; if (sifrelenecek == "{") sifrelenecek = "T"; if (sifrelenecek == "}") sifrelenecek = "U";
+                    if (sifrelenecek == "[") sifrelenecek = "Ü"; if (sifrelenecek == "]") sifrelenecek = "V";
+                    if (sifrelenecek == "+") sifrelenecek = "Y";
+                    // if (sifrelenecek == "\") sifrelenecek = "Y"; 
+                    // if (sifrelenecek == "") sifrelenecek = "Z";
+                    //değer atama bitişi...
+
+                    for (int j = 0; j < alfabetr.Length; j++) //0'dan başlayarak dizinin uzunluğuna 1'er arttır.
+                    //yani 0'dan 29 a kadar 1arttırıyor
                     {
-                        if (pmetin == alfabe[j]) //eleman dizide varsa döngüden çık
-                        { break; }
-                        else //yoksa dizideki yerini bulmak için 1 artır
-                        { x++; }
+                        if (sifrelenecek == alfabetr[j]) //eğer textbox3teki eleman alfabetr dizisinde varsa döngüden çık
+                        { break; } // break komutu döngünün bu komutun görüldüğü yerde bitirilerek döngünün dışına çıkılması için kullanılır.
+                        else
+                        { x++; } //eleman eğer dizide yoksa dizideki yerini bulabilmek için 1'arttır.
                     }
-                    if (pmetin == " ") //eğer metinin içerinde boşluk varsa
+                    if (sifrelenecek == " ") //eğer textbox3'teki metinde boşluk bırakılırsa
                     {
-                        cmetin += " "; //şifreli metine ekle ama boşluğu şifreleme
-                        x = 0;
+                        tersmetin += " "; //textbox3'e ekle ama boşluğu şifreleme  
+                        x = 0; //dizideki yerini sıfırla   BİLİNMEYEN BİRŞEY GİRİLDİĞİNDE DİZİDEKİ YERİNİ 0 YANİ (A HARFİ) olarak kabul edicek 
                     }
-                    else if (char.Parse(pmetin) >= 48 && char.Parse(pmetin) <= 57) //ASCI kod tablosunda 0-9 arasındaki rakamlar
+                    else if (char.Parse(sifrelenecek) >= 48 && char.Parse(sifrelenecek) <= 57) //ASCİ TABLOSUNDA 48-57 ARALĞI = 0-9 ARALIĞI
                     {
-                        cmetin += pmetin; //şifrelemeye dahil etmeden ekle
+                        //şifreleme döngüsüne sokmadan eklicek
+                        tersmetin += sifrelenecek; //örnek ? işareti girildiğinde  şifreleme algoritmasana sokmadan yukarda tanımladığım ?  = A daki ? yerine A yı metine eklicek.
                         x = 0; //dizideki yerini sıfırla
                     }
-                    else //yoksa kaldığı yerden devam et
+                    else //şifreleme kısmı başlıyor affine algoritması
                     {
-                        for (int modters = 1; modters < 27; modters++) //modüler ters alma işlemi 3^-1 mod 29
+                        for (int modters = 1; modters < 29; modters++) //modüler ters alma işlemi 3^-1 mod 29
                         {
                             if ((a * modters) % 29 == 1) //kalan eğer 1'e eşitse o sayının modüler tersi modters değişkenindeki elemandır
                             {
-                                mters = modters;
+                                terss = modters;
                                 break; //döngünün bu komutun görüldüğü yerde bitirilerek döngünün dışına çıkılması için kullanılır.
                             }
                         }
-                        if (mters != 0) //modüler tersi varsa işleme devam et
+                        if ( terss != 0) //modüler tersi varsa işleme devam et
                         {
                             if (x - b < 0) x += 29; //x-b sıfırdan küçük ise x'e 29 (mod 29 olduğu için) ekle
-                            Dy = (mters * (x - b)) % 29; //y=a^-1*(x-b) formülüne göre modunu alarak şifre çöz
+                            blabla = (terss * (x - b)) % 29; //y=a^-1*(x-b) formülüne göre modunu alarak şifre çöz
                             x = 0; //dizideki yerini sıfırla
-                            cmetin += alfabe[Dy]; //ve dizideki yerini bul değişkene at
+                            tersmetin += alfabetr[blabla]; //ve dizideki yerini bul değişkene at
                         }
-                        else if (mters == 0) //modüler tersi sıfıra eşitse mesaj ver ve döngüden çık
+                        else if (terss == 0) //modüler tersi sıfıra eşitse mesaj ver ve döngüden çık
                         {
                             MessageBox.Show("a anahtarının modüler tersi olmadığı için çözme işlemi gerçekleştirilemiyor!\nBu yüzden a anahtarı tek sayı olmalıdır.", "Modüler Ters");
                             break;  //döngünün bu komutun görüldüğü yerde bitirilerek döngünün dışına çıkılması için kullanılır.
                         }
                     }
                 }
-                textBox5.Text = cmetin; //oluşan şifreli metni yazdır
+                textBox5.Text = tersmetin; //oluşan şifreli metni yazdır
             }
-            catch (Exception) //tüm oluşabilecek hataları yakala
+            catch (Exception) //Olası bir hata durumunda
             {
                 MessageBox.Show("Hatalı Veri Girişi");  //tanımlamadığım bir hata oluşması durumunda verilecek hata
             }
@@ -266,9 +285,7 @@ namespace WindowsFormsApp2
             textBox4.Text = "";   //textboxları boş hale getir
             textBox5.Text = "";   //textboxları boş hale getir
         }
-
-
-        private void timer2_Tick(object sender, EventArgs e)  //timer2 kodları
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             int sayimi;  //sayimi adinda sayi değişkeni atıyorum
             if (!int.TryParse(textBox1.Text, out sayimi))  //eğer rakam dışı birşey textbox1'e yazılmaya çalışıyor ise textbox1'i boş kutu haline getir  text ""
@@ -276,15 +293,22 @@ namespace WindowsFormsApp2
                 textBox1.Text = "";  //textboxu boş hale getiriyor
 
             }
-            else
-                label10.Text = ""; //labeli boş hale getiriyor
+        }
 
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            int sayimi;
             if (!int.TryParse(textBox2.Text, out sayimi))
             {
                 textBox2.Text = "";
             }
-            else
-                label11.Text = "";
+        }
+
+
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
