@@ -124,8 +124,6 @@ namespace WindowsFormsApp2
 
 
 
-
-
         //
         //
         //
@@ -134,7 +132,7 @@ namespace WindowsFormsApp2
         //
         //
         //
-        //BURDAN SONRASI DECOMPILE KISMINA GIRIYOR DERSTE ANLATMAM GEREKMEZ DİYE BOŞLUK BIRAKTIM AŞAĞI IN ZATEN YUKARDAKILERDEN FARKLI BIRŞEY YOK İŞLEMLER TERSTEN GİDİYOR
+        //BURDAN SONRASI DECOMPILE KISMINA GIRIYOR DERSTE ANLATMAM GEREKMEZ DİYE BOŞLUK BIRAKTIM ZATEN YUKARDAKILERDEN FARKLI BIRŞEY YOK İŞLEMLER TERSTEN GİDİYOR
 
         private void Button2_Click(object sender, EventArgs e)
         {   // deşifre etme kısmı 
@@ -252,7 +250,6 @@ namespace WindowsFormsApp2
                 MessageBox.Show("Hatalı Veri Girişi");  //tanımlamadığım bir hata oluşması durumunda verilecek hata
             }
         }
-
 
         //DECOMPILE KISMI BİTER..
         //
